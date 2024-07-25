@@ -1,86 +1,143 @@
-# ES6 Promises
+# ES6 Classes
 
-This project contains tasks for learning to use Promises in ECMAScript 2015 (ES6).
+This project contains tasks for learning to use classes in ECMAScript 2015 (ES6).
 
 ## Tasks To Complete
 
-+ [x] 0. **Keep every promise you make and only make promises you can keep**<br/>[0-promise.js](0-promise.js) contains a script that exports a function with the prototype `function getResponseFromAPI()`, which returns a Promise.
++ [x] 0. **You used to attend a place like this at some point**<br/>[0-classroom.js](0-classroom.js) contains a script that exports a class named `ClassRoom` with the following requirements:
+  + Prototype: `export default class ClassRoom`.
+  + It should accept one attribute named `maxStudentsSize` (Number) and assigned to `_maxStudentsSize`.
 
-+ [x] 1. **Don't make a promise...if you know you can't keep it**<br/>[1-promise.js](1-promise.js) contains a script that exports a function with the prototype `getFullResponseFromAPI(success)`, which returns a Promise. The parameter (`success`) is a `boolean`.
-  + When the argument is:
-    + `true`
-      + Resolve the promise by passing an object with 2 attributes:
-        + `status`: `200`
-        + `body`: `'Success'`
-    + `false`
-      + Reject the promise with an error object with the message `The fake API is not working currently`.
++ [x] 1. **Let's make some classrooms**<br/>[1-make_classrooms.js](1-make_classrooms.js) contains a script that meets the following requirements:
+  + Import the `ClassRoom` class from [0-classroom.js](0-classroom.js).
+  + Export a function named `initializeRooms`. It should return an array of 3 `ClassRoom` objects with the sizes 19, 20, and 34 (in this order).
 
-+ [x] 2. **Catch me if you can!**<br/>[2-then.js](2-then.js) contains a script that exports a function with the prototype `function handleResponseFromAPI(promise)`, which appends three handlers to the `promise` argument.
-  + When the Promise resolves, return an object with the following attributes:
-    + `status`: `200`,
-    + `body`: `'success'`
-  + When the Promise rejects, return an empty `Error` object.
-  + For every resolution, log `Got a response from the API` to the console.
++ [x] 2. **A Course, Getters, and Setters**<br/>[2-hbtn_course.js](2-hbtn_course.js) contains a script that exports a class named `HolbertonCourse` with the following requirements:
+  + Constructor arguments:
+    + `name` (String).
+    + `length` (Number).
+    + `students` (array of Strings).
+  + Make sure to verify the type of attributes during object creation.
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + Implement a getter and setter for each attribute.
 
-+ [x] 3. **Handle multiple successful promises**<br/>[3-all.js](3-all.js) contains a script that meets the following requirements.
-  + Import `uploadPhoto` and `createUser` from [utils.js](utils.js).
-  + Use the prototype below to collectively resolve all promises and log `body firstName lastName` to the console. The functions in [utils.js](utils.js) return Promises.
-    ```js
-    function handleProfileSignup()
-    ```
-  + In the event of an error, log `Signup system offline` to the console.
++ [x] 3. **Methods, static methods, computed methods names..... MONEY**<br/>[3-currency.js](3-currency.js) contains a script that exports a class named `Currency` with the following requirements:
+  + Constructor arguments:
+    + `code` (String).
+    + `name` (String).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + Implement a getter and setter for each attribute.
+  + Implement a method named `displayFullCurrency` that will return the attributes in the format `name (code)`.
 
-+ [x] 4. **Simple promise**<br/>[4-user-promise.js](4-user-promise.js) contains a script that exports a function with the prototype `function signUpUser(firstName, lastName)`, which returns a resolved promise with the object shown below.
++ [x] 4. **Pricing**<br/>[4-pricing.js](4-pricing.js) contains a script that meets the following requirements:
+  + Import the class `Currency` from [3-currency.js](3-currency.js).
+  + Export a class named `Pricing` that meets the following requirements:
+    + Constructor arguments:
+      + `amount` (Number).
+      + `currency` (Currency).
+    + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+    + Implement a getter and setter for each attribute.
+    + Implement a method named `displayFullPrice` that returns the attributes in the format `amount currency_name (currency_code)`.
+    + Implement a static method named `convertPrice`. It should accept two arguments: `amount` (Number), `conversionRate` (Number). The function should return the amount multiplied by the conversion rate.
+
++ [x] 5. **A Building**<br/>[5-building.js](5-building.js) contains a script that exports a class named `Building` with the following requirements:
+  + Constructor arguments:
+    + `sqft` (Number).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + Implement a getter for each attribute.
+  + Consider this class as an abstract class. And make sure that any class that extends from it should implement a method named `evacuationWarningMessage`.
+    + If a class that extends from it does not have a `evacuationWarningMessage` method, throw an error with the message `Class extending Building must override evacuationWarningMessage`.
+
++ [x] 6. **Inheritance**<br/>[6-sky_high.js](6-sky_high.js) contains a script that meets the following requirements:
+  + Import `Building` from [4-building.js](4-building.js).
+  + Export a class named `SkyHighBuilding` that extends from `Building` and meets the following requirements:
+    + Constructor arguments:
+      + `sqft` (Number) (must be assigned to the parent class `Building`).
+      + `floors` (Number).
+    + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+    + Implement a getter for each attribute.
+    + Override the method named `evacuationWarningMessage` and return the following string `Evacuate slowly the NUMBER_OF_FLOORS floors`.
+
++ [x] 7. **Airport**<br/>[7-airport.js](7-airport.js) contains a script that exports a class named `Airport` with the following requirements:
+  + Constructor arguments:
+    + `name` (String).
+    + `code` (String).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + The default string description of the class should return the airport `code` (example below).
+
++ [x] 8. **Primitive - Holberton Class**<br/>[8-hbtn_class.js](8-hbtn_class.js) contains a script that exports a class named `HolbertonClass` with the following requirements:
+  + Constructor arguments:
+    + `size` (Number).
+    + `location` (String).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + When the class is cast into a `Number`, it should return the size.
+  + When the class is cast into a `String`, it should return the location.
+
++ [x] 9. **Hoisting**<br/>[9-hoisting.js](9-hoisting.js) contains a fixed and working copy of the code below:
   ```js
-  {
-    firstName: value,
-    lastName: value,
+  const class2019 = new HolbertonClass(2019, 'San Francisco');
+  const class2020 = new HolbertonClass(2020, 'San Francisco');
+
+  export class HolbertonClass {
+    constructor(year, location) {
+      this._year = year;
+      this._location = location;
+    }
+
+    get year() {
+      return this._year;
+    }
+
+    get location() {
+      return this._location;
+    }
   }
+
+  const student1 = new StudentHolberton('Guillaume', 'Salva', class2020);
+  const student2 = new StudentHolberton('John', 'Doe', class2020);
+  const student3 = new StudentHolberton('Albert', 'Clinton', class2019);
+  const student4 = new StudentHolberton('Donald', 'Bush', class2019);
+  const student5 = new StudentHolberton('Jason', 'Sandler', class2019);
+
+  export class StudentHolberton {
+    constructor(firstName, lastName) {
+      this._firstName = firstName;
+      this._lastName = lastName;
+      this._holbertonClass = holbertonClass;
+    }
+
+    get fullName() {
+      return `${this._firstName} ${this._lastName}`;
+    }
+
+    get holbertonClass() {
+      return this.holbertonClass;
+    }
+
+    get fullStudentDescription() {
+      return `${self._firstName} ${self._lastName} - ${self._holbertonClass.year} - ${self._holbertonClass.location}`;
+    }
+  }
+
+
+  export const listOfStudents = [student1, student2, student3, student4, student5];
   ```
 
-+ [x] 5. **Reject the promises**<br/>[5-photo-reject.js](5-photo-reject.js) contains a script that exports a function with the prototype `function uploadPhoto(filename)`, which returns a Promise rejecting with an Error and the string `$fileName cannot be processed`, where `fileName` is a string.
++ [x] 10. **Vroom**<br/>[10-car.js](10-car.js) contains a script that exports a class named `Car` with the following requirements:
+  + Constructor arguments:
+    + `brand` (String).
+    + `motor` (String).
+    + `color` (String).
+  + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+  + Add a method named `cloneCar`. This method should return a new object of the class.
 
-+ [x] 6. **Handle multiple promises**<br/>[6-final-user.js](6-final-user.js) contains a script that meets the following requirements.
-  + Import `signUpUser` from [4-user-promise.js](4-user-promise.js) and `uploadPhoto` from [5-photo-reject.js](5-photo-reject.js).
-  + Export a function named `handleProfileSignup` that accepts three arguments `firstName` (string), `lastName` (string), and `fileName` (string) and calls the two other functions (`signUpUser` and `uploadPhoto`).
-  + When the promises are all settled it should return an array with the following structure:
-    ```js
-    [
-      {
-        status: status_of_the_promise,
-        value: value || reason // value or error returned by the Promise
-      },
-      ...
-    ]
-    ```
-
-+ [x] 7. **Load balancer**<br/>[7-load_balancer.js](7-load_balancer.js) contains a script that exports a function with the prototype `function loadBalancer(chinaDownload, USDownload)`, which returns the value returned by the promise that resolved the first, where `chinaDownload` and `USDownload` are Promises.
-
-+ [x] 8. **Throw error / try catch**<br/>[8-try.js](8-try.js) contains a script that meets the following requirements.
-  + Exports a function with the prototype `function divideFunction(numerator, denominator)`, where `numerator` and `denominator` are numbers.
-  + When the `denominator` argument is equal to 0, the function should throw a new error with the message `cannot divide by 0`.
-  + Otherwise it should return the `numerator` divided by the `denominator`.
-
-+ [x] 9. **Throw an error**<br/>[9-try.js](9-try.js) contains a script that meets the following requirements.
-  + Export a function named `guardrail` that accepts a function argument called `mathFunction`.
-  + The `guardrail` function should create and return an array named `queue`.
-  + When the `mathFunction` function is executed, the value returned by the function should be appended to the `queue`. If this function throws an error, the error message should be appended to the `queue`.
-  + In every case, the message `Guardrail was processed` should be added to the queue.
-
-+ [x] 10. **Await / Async**<br/>[100-await.js](100-await.js) contains a script that meets the following requirements.
-  + Import `uploadPhoto` and `createUser` from [utils.js](utils.js).
-  + Export an async function named `asyncUploadUser` that will call the two functions imported above and return an object with the following format:
-    ```js
-    {
-      photo: response_from_uploadPhoto_function,
-      user: response_from_createUser_function,
-    }
-    ```
-  + Import `uploadPhoto` and `createUser` from [utils.js](utils.js).
-  + If one of the async function fails, return an empty object as shown below:
-    ```js
-    {
-      photo: null,
-      user: null,
-    }
-    ```
++ [x] 11. **EVCar**<br/>[100-evcar.js](100-evcar.js) contains a script that meets the following requirements:
+  + Import `Car` from [10-car.js](10-car.js).
+  + Export a class named `EVCar` that extends the `Car` class and meets the following requirements:
+    + Constructor arguments:
+      + `brand` (String).
+      + `motor` (String).
+      + `color` (String).
+      + `range` (String).
+    + Each attribute must be stored in an "underscore" attribute version (ex: `name` is stored in `_name`).
+    + For privacy reasons, when `cloneCar` is called on an `EVCar` object, the object returned should be an instance of `Car` instead of `EVCar`.
